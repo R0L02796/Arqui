@@ -130,12 +130,13 @@ void printSnake(Color color, SnakePart s) {
 	drawRectangle(color, xPos, yPos, 4,4);
 
 	if(s->tail==NULL)
-		drawRectangle(color, 20, 60, 10,4);
+		drawRectangle(color, 20, 100, 10,10);
 
-	 while (s->tail!=NULL)
+	 while (s->tail != NULL)
 	{
 		printSnake(color,s->tail);	
 	}
+	return;
 }
 
 void printFruit(Color color, Fruit b) {
