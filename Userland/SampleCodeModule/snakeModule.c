@@ -26,6 +26,7 @@ void startSnake(){
 	Fruit fruit = &fruits;
 
 	addPart(snake->head,&tail);
+
     printInitScreenSnk(fruit,snake);
 
 	char * str = "\n          ~~~WELCOME TO LENIAS SNAKE, PRESS ENTER TO PLAY OR PRESS BACKSPACE TO QUIT. YOU MAY QUIT ANYTIME DURING GAME~~~";
@@ -126,7 +127,7 @@ void printSnake(Color color, SnakePart s) {
 	int xPos=s->posX;
 	int yPos=s->posY;
 	
-	drawRectangle(color, xPos, yPos, 4,4);
+	drawRectangle(color, xPos, yPos, 4,yResolution/2);
 
 	while (s->tail!=NULL)
 	{
