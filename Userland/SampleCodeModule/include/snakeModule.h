@@ -17,17 +17,17 @@ typedef struct fruit{
 	int posY;
 } FruitStruct;
 
+typedef struct snakePart{
+	int isHead;
+	struct snakePart * tail;
+	int posX;
+	int posY;
+}SnakePartStruct;
+
 typedef struct snake{
 	SnakePartStruct * head;
 	int dir;
 }SnakeStruct;
-
-typedef struct snakePart{
-	int isHead;
-	SnakePartStruct * tail;
-	int posX;
-	int posY;
-}SnakePartStruct;
 
 typedef SnakePartStruct * SnakePart;
 typedef SnakeStruct * Snake;
@@ -58,10 +58,8 @@ void moveSnake(Snake s, int step);
 void actSnk(char command, Snake snake);
 
 //adds part
-void addPart(SnakePart head);
+void addPart(SnakePart head, SnakePart part);
 
-//recursive add
-SnakePart addPartRec(SnakePart current,int x, int y);
 
 
 

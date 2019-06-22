@@ -3,6 +3,7 @@
 #include "stdlib.h"
 #include "timeModule.h"
 #include "soundModule.h"
+#include "stddef.h"
 
 
 static int xResolution;
@@ -16,12 +17,15 @@ void startSnake(){
     getSize(&xResolution, &yResolution);	
 
 	SnakePartStruct Parts = {1,NULL,xResolution/2,yResolution/2};
+	SnakePartStruct tail = {1,NULL,Parts.posX-1,Parts.posY};
+
 	SnakeStruct snakes = {&Parts,SUP};
    	FruitStruct fruits = {xResolution/15, yResolution/1.3};
 
 	Snake snake = &snakes;
 	Fruit fruit = &fruits;
 
+	addPart(snake,&tail);
     printInitScreenSnk(fruit,snake);
 
 	char * str = "\n          ~~~WELCOME TO LENIAS SNAKE, PRESS ENTER TO PLAY OR PRESS BACKSPACE TO QUIT. YOU MAY QUIT ANYTIME DURING GAME~~~";
@@ -140,13 +144,12 @@ void printFrameSnk() {
 	drawRectangle(white, 2, yResolution/2, 1, (yResolution/2)-2);
 	drawRectangle(white, xResolution-2, yResolution/2, 1, (yResolution/2)-2);
 }
-void addPart(SnakePart head){
-	head->tail=addPartRec(head,head->posX-1,head->posY);
-}
-SnakePart addPartRec(SnakePart current,int x, int y){
-	if(current->tail==NULL){
-		SnakePartStruct newpart={0,NULL,x,y};
-		return &newpart;
+void addPart(SnakePart head, SnakePart part){
+	SnakePart current=head;
+	while (head->tail!=NULL)
+	{
+		current=current->tail;
 	}
-	current->tail=addPartRec(current->tail,x,y);
+	current->tail = part;
 }
+
