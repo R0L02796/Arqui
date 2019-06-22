@@ -20,6 +20,13 @@ void startSnake(){
 
     printInitScreenSnk(fruit);
 
+	char * str = "\n          ~~~WELCOME TO LENIAS SNAKE, PRESS ENTER TO PLAY OR PRESS BACKSPACE TO QUIT. YOU MAY QUIT ANYTIME DURING GAME~~~";
+	putStr(str);
+
+	char c;
+	while((c = getChar()) != '\b' && c != '\n');
+	if (c == '\b') {
+		return;}
 
 }
 
