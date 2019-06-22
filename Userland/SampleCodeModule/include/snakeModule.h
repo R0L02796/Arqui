@@ -5,10 +5,10 @@
 #define SNAKEMODULE_H
 #include "videoModule.h"
 
-#define UP 119
-#define DOWN 115
-#define RIGHT 100
-#define LEFT 97
+#define SUP 119
+#define SDOWN 115
+#define SRIGHT 100
+#define SLEFT 97
 
 typedef struct fruit{
 	int posX;
