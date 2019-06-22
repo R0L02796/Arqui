@@ -51,7 +51,9 @@ void initShell(){
       case EXIT:
           exit();
           break;
-
+      case SNAKE:
+          snake();
+          break;
       case INVCOM:
           invCom();
     }
@@ -68,6 +70,7 @@ int getCommand(char * command) {
   if (!strCmp("invopcode", command)) return INVOPCODE;
   if (!strCmp("lenia", command)) return LENIA;
   if (!strCmp("exit", command)) return EXIT;
+  if (!strCmp("snake", command)) return SNAKE;
   return INVCOM;
 }
 
@@ -81,6 +84,9 @@ void help() {
   printf("  * time      :       Displays current time\n");
   printf("  * pong      :       Iniciates pong when user presses 'enter' which will run until\n"); 
   printf("                      end of game or until user presses 'backspace' to leave\n");
+  printf("  * snake      :      Iniciates snake when user presses 'enter' which will run until\n"); 
+  printf("                      end of game or until user presses 'backspace' to leave\n");
+
 
   printf("\n  Any other command will be taken as invalid\n\n");
 
@@ -100,6 +106,10 @@ void time(){
 
 void pong() {
   startPong();
+  clear();
+}
+void snake() {
+  startSnake();
   clear();
 }
 
