@@ -15,11 +15,13 @@ static Color black = {0, 0, 0};
 void startSnake(){
     getSize(&xResolution, &yResolution);	
 
+	SnakeStruct snakes = {xResolution/2,yResolution/2,UP};
    	FruitStruct fruits = {xResolution/15, yResolution/32};
 
+	Snake snake = &snakes;
 	Fruit fruit = &fruits;
 
-    printInitScreenSnk(fruit);
+    printInitScreenSnk(fruit,snake);
 
 	char * str = "\n          ~~~WELCOME TO LENIAS SNAKE, PRESS ENTER TO PLAY OR PRESS BACKSPACE TO QUIT. YOU MAY QUIT ANYTIME DURING GAME~~~";
 	putStr(str);
@@ -47,10 +49,16 @@ int playSnk(Fruit fruit) {
 	}
 	return exitStatus;
 }
-void printInitScreenSnk(Fruit fruit) {
+void printInitScreenSnk(Fruit fruit,Snake snake) {
 	clearScreen();
 	printFrameSnk();
+	printSnake(white, snake);
 	printFruit(white, fruit);
+}
+void printSnake(Color color, Snake s) {
+	int xPos = s->posX;
+	int yPos = s->posY;
+	drawRectangle(color, xPos, yPos, 3, 50);
 }
 
 void printFruit(Color color, Fruit b) {
