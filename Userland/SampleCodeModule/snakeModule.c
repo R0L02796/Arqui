@@ -17,7 +17,7 @@ void startSnake(){
     getSize(&xResolution, &yResolution);	
 
 	SnakePartStruct Parts = {1,NULL,xResolution/2,yResolution/2};
-	SnakePartStruct tail = {1,NULL,Parts.posX-20,Parts.posY};
+	SnakePartStruct tail = {0,NULL,Parts.posX-20,Parts.posY};
 
 	SnakeStruct snakes = {&Parts,SUP};
    	FruitStruct fruits = {xResolution/15, yResolution/1.3};
@@ -120,7 +120,7 @@ void moveSnake(Snake s, int newDir) {
 void printInitScreenSnk(Fruit fruit,Snake snake) {
 	clearScreen();
 	printFrameSnk();
-	//printSnake(white, snake->head);
+	printSnake(white, snake->head);
 	printFruit(white, fruit);
 }
 void printSnake(Color color, SnakePart s) {
@@ -129,10 +129,10 @@ void printSnake(Color color, SnakePart s) {
 	
 	drawRectangle(color, xPos, yPos, 4,4);
 
-	while (s->tail!=NULL)
+	/* while (s->tail!=NULL)
 	{
 		printSnake(color,s->tail);	
-	}
+	}*/
 }
 
 void printFruit(Color color, Fruit b) {
