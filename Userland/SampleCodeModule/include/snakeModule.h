@@ -40,7 +40,7 @@ void startSnake();
 void printSnake(Color color, SnakePart snake);
 
 // Displays initial screen of game
-void printInitScreenSnk(Fruit fruit,Snake snake);
+void printInitScreenSnk(Fruit fruit, Snake snake);
 
 // Prints game's limits
 void printFrameSnk();
@@ -49,12 +49,24 @@ void printFrameSnk();
 void printFruit(Color color, Fruit fruit);
 
 //Starts game
-int playSnk(Fruit fruit,Snake snake) ;
+int playSnk(Fruit fruit, Snake snake) ;
 
 //moves snake
 void moveSnake(Snake s, int step);
 
 // Recives an action from the player to move and executes it
-void actSnk(char command,Snake snake);
+void actSnk(char command, Snake snake);
+
+//adds part
+void addPart(SnakePart head);
+
+//recursive add
+SnakePart addPartRec(SnakePart current,int x, int y);
+
+
+
+
+
+
 
 #endif
