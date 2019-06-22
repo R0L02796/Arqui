@@ -4,27 +4,27 @@
 #ifndef SNAKEMODULE_H
 #define SNAKEMODULE_H
 #include "videoModule.h"
-typedef struct ball{
+typedef struct fruit{
 	int posX;
 	int posY;
 	int dirX;
 	int dirY;
-} BallStruct;
+} FruitStruct;
 
-typedef BallStruct * Ball;
+typedef FruitStruct * Fruit;
 
 // Prepares everything to start game
 void startSnake(); 
 
 
 // Displays initial screen of game
-void printInitScreen(Ball ball);
+void printInitScreenSnk(Fruit fruit);
 
 // Prints game's limits
-void printFrame();
+void printFrameSnk();
 
-// Prints ball
-void printBall(Color color, Ball ball);
+// Prints fruit
+void printFruit(Color color, Fruit fruit);
 
 
 

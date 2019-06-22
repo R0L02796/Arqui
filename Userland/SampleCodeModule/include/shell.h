@@ -50,6 +50,9 @@ void exit();
 // Displays the message for when a command was not recognized
 void invCom();
 
+// Executes the 'snake' command. Initializes the snake game
+void snake();
+
 // Declaration of external function
 void opCode();
 

@@ -14,22 +14,22 @@ static Color black = {0, 0, 0};
 void startSnake(){
     getSize(&xResolution, &yResolution);	
 
-   	BallStruct ballS = {xResolution/2, yResolution/2, 15, 17};
+   	FruitStruct fruits = {xResolution/2, yResolution/2, 15, 17};
 
-	Ball ball = &ballS;
+	Fruit fruit = &fruits;
 
-    printInitScreen(ball);
+    printInitScreenSnk(fruit);
 
 
 }
 
-void printInitScreen(Ball ball) {
+void printInitScreenSnk(Fruit fruit) {
 	clearScreen();
 	printFrame();
-	printBall(white, ball);
+	printFruit(white, fruit);
 }
 
-void printBall(Color color, Ball b) {
+void printFruit(Color color, Fruit b) {
 	drawBall(color, 10, b->posX, b->posY);
 }
 
