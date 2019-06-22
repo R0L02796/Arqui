@@ -127,12 +127,15 @@ void printSnake(Color color, SnakePart s) {
 	int xPos=s->posX;
 	int yPos=s->posY;
 	
-	drawRectangle(color, xPos, yPos, 4,yResolution/2);
+	drawRectangle(color, xPos, yPos, 4,4);
 
 	while (s->tail!=NULL)
 	{
 		printSnake(color,s->tail);	
 	}
+	
+	drawRectangle(color, 20, 60, 10,4);
+
 }
 
 void printFruit(Color color, Fruit b) {
