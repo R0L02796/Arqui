@@ -12,9 +12,10 @@ static Color black = {0, 0, 0};
 
 
 void startSnake(){
+	srand(time(NULL));
     getSize(&xResolution, &yResolution);	
 
-   	FruitStruct fruits = {xResolution/2, yResolution/2, 15, 17};
+   	FruitStruct fruits = {xResolution*rand(), yResolution/rand()};
 
 	Fruit fruit = &fruits;
 
@@ -26,10 +27,26 @@ void startSnake(){
 	char c;
 	while((c = getChar()) != '\b' && c != '\n');
 	if (c == '\b') {
-		return;}
+		return;
+	}
+	drawRectangle(black, xResolution/2, 20, (xResolution/2)-60, 10);
+
+	int exitStatus = playSnk(fruit);	
 
 }
 
+int playSnk(Fruit fruit) {
+	int playing = 1;
+	int exitStatus = 0;
+	while (playing) {
+		wait(1);
+		char command = getChar();
+		if (command == '\b') {
+			playing = 0;
+		}
+	}
+	return exitStatus;
+}
 void printInitScreenSnk(Fruit fruit) {
 	clearScreen();
 	printFrameSnk();

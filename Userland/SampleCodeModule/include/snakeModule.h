@@ -7,8 +7,6 @@
 typedef struct fruit{
 	int posX;
 	int posY;
-	int dirX;
-	int dirY;
 } FruitStruct;
 
 typedef FruitStruct * Fruit;
@@ -26,6 +24,7 @@ void printFrameSnk();
 // Prints fruit
 void printFruit(Color color, Fruit fruit);
 
-
+//Starts game
+int playSnk(Fruit fruit) ;
 
 #endif
