@@ -10,17 +10,26 @@
 #define SRIGHT 100
 #define SLEFT 97
 
+#define STEP 20
+
 typedef struct fruit{
 	int posX;
 	int posY;
 } FruitStruct;
 
 typedef struct snake{
-	int posX;
-	int posY;
+	SnakePartStruct * head;
 	int dir;
 }SnakeStruct;
 
+typedef struct snakePart{
+	int isHead;
+	SnakePartStruct * tail;
+	int posX;
+	int posY;
+}SnakePartStruct;
+
+typedef SnakePartStruct * SnakePart;
 typedef SnakeStruct * Snake;
 typedef FruitStruct * Fruit;
 
@@ -28,7 +37,7 @@ typedef FruitStruct * Fruit;
 void startSnake(); 
 
 // Prints snake
-void printSnake(Color color, Snake snake);
+void printSnake(Color color, SnakePart snake);
 
 // Displays initial screen of game
 void printInitScreenSnk(Fruit fruit,Snake snake);
@@ -40,6 +49,12 @@ void printFrameSnk();
 void printFruit(Color color, Fruit fruit);
 
 //Starts game
-int playSnk(Fruit fruit) ;
+int playSnk(Fruit fruit,Snake snake) ;
+
+//moves snake
+void moveSnake(Snake s, int step);
+
+// Recives an action from the player to move and executes it
+void actSnk(char command,Snake snake);
 
 #endif

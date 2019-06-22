@@ -15,7 +15,8 @@ static Color black = {0, 0, 0};
 void startSnake(){
     getSize(&xResolution, &yResolution);	
 
-	SnakeStruct snakes = {xResolution/2,yResolution/2,SUP};
+	SnakePartStruct Parts = {1,NULL,xResolution/2,yResolution/2};
+	SnakeStruct snakes = {&Parts,SUP};
    	FruitStruct fruits = {xResolution/15, yResolution/1.3};
 
 	Snake snake = &snakes;
@@ -33,11 +34,11 @@ void startSnake(){
 	}
 	drawRectangle(black, xResolution/2, 20, (xResolution/2)-60, 10);
 
-	int exitStatus = playSnk(fruit);	
+	int exitStatus = playSnk(fruit, snake);	
 
 }
 
-int playSnk(Fruit fruit) {
+int playSnk(Fruit fruit, Snake snake) {
 	int playing = 1;
 	int exitStatus = 0;
 	while (playing) {
@@ -46,19 +47,87 @@ int playSnk(Fruit fruit) {
 		if (command == '\b') {
 			playing = 0;
 		}
+		actSnk(command,snake);
+
 	}
 	return exitStatus;
 }
+
+void actSnk(char command,Snake snake) {
+	switch (snake->dir)
+	{
+		case SUP: 
+			switch(command)
+			{
+				case SRIGHT:
+					moveSnake(snake, SRIGHT);
+					break;
+				case SLEFT:
+					moveSnake(snake, SLEFT);
+					break;
+				default:
+					return;
+			}
+		case SDOWN: 
+			switch(command)
+			{
+				case SRIGHT:
+					moveSnake(snake, SRIGHT);
+					break;
+				case SLEFT:
+					moveSnake(snake, SLEFT);
+					break;
+				default:
+					return;
+			}
+		case SRIGHT: 
+			switch(command)
+			{
+				case SUP:
+					moveSnake(snake, SUP);
+					break;
+				case SDOWN:
+					moveSnake(snake, SDOWN);
+					break;
+				default:
+					return;
+			}
+		case SLEFT: 
+			switch(command)
+			{
+				case SUP:
+					moveSnake(snake, SUP);
+					break;
+				case SDOWN:
+					moveSnake(snake, SDOWN);
+					break;
+				default:
+					return;
+			}
+	
+	}
+}
+
+void moveSnake(Snake s, int newDir) {	
+
+}
+
 void printInitScreenSnk(Fruit fruit,Snake snake) {
 	clearScreen();
 	printFrameSnk();
-	printSnake(white, snake);
+	printSnake(white, snake->head);
 	printFruit(white, fruit);
 }
-void printSnake(Color color, Snake s) {
-	int xPos = s->posX;
-	int yPos = s->posY;
-	drawRectangle(color, xPos, yPos, 3, 50);
+void printSnake(Color color, SnakePart s) {
+	int xPos=s->posX;
+	int yPos=s->posY;
+	
+	drawRectangle(color, xPos, yPos, 4,4);
+
+	while (s->tail!=NULL)
+	{
+		printSnake(color,s->tail);	
+	}
 }
 
 void printFruit(Color color, Fruit b) {
@@ -70,4 +139,14 @@ void printFrameSnk() {
 	drawRectangle(white, xResolution/2, yResolution-2, (xResolution/2 )-2, 0);
 	drawRectangle(white, 2, yResolution/2, 1, (yResolution/2)-2);
 	drawRectangle(white, xResolution-2, yResolution/2, 1, (yResolution/2)-2);
+}
+void addPart(SnakePart head){
+	head->tail=addPartRec(head,head->posX-1,head->posY);
+}
+SnakePart addPartRec(SnakePart current,int x, int y){
+	if(current->tail==NULL){
+		SnakePartStruct newpart={0,NULL,x,y};
+		return &newpart;
+	}
+	current->tail=addPartRec(current->tail,x,y);
 }
