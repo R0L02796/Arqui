@@ -25,7 +25,7 @@ void startSnake(){
 	Snake snake = &snakes;
 	Fruit fruit = &fruits;
 
-	addPart(snake,&tail);
+	addPart(snake->head,&tail);
     printInitScreenSnk(fruit,snake);
 
 	char * str = "\n          ~~~WELCOME TO LENIAS SNAKE, PRESS ENTER TO PLAY OR PRESS BACKSPACE TO QUIT. YOU MAY QUIT ANYTIME DURING GAME~~~";
