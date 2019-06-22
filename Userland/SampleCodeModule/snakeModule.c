@@ -16,7 +16,7 @@ void startSnake(){
     getSize(&xResolution, &yResolution);	
 
 	SnakeStruct snakes = {xResolution/2,yResolution/2,SUP};
-   	FruitStruct fruits = {xResolution/15, yResolution-4};
+   	FruitStruct fruits = {xResolution/15, yResolution/1.3};
 
 	Snake snake = &snakes;
 	Fruit fruit = &fruits;
