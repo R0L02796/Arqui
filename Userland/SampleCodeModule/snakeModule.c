@@ -17,7 +17,7 @@ void startSnake(){
     getSize(&xResolution, &yResolution);	
 
 	SnakePartStruct Parts = {1,NULL,xResolution/2,yResolution/2};
-	SnakePartStruct tail = {1,NULL,Parts.posX-1,Parts.posY};
+	SnakePartStruct tail = {1,NULL,Parts.posX-20,Parts.posY};
 
 	SnakeStruct snakes = {&Parts,SUP};
    	FruitStruct fruits = {xResolution/15, yResolution/1.3};
@@ -133,9 +133,6 @@ void printSnake(Color color, SnakePart s) {
 	{
 		printSnake(color,s->tail);	
 	}
-	
-	drawRectangle(color, 20, 60, 10,4);
-
 }
 
 void printFruit(Color color, Fruit b) {
