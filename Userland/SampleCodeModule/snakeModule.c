@@ -3,6 +3,8 @@
 #include "stdlib.h"
 #include "timeModule.h"
 #include "soundModule.h"
+#include "stdio.h"
+#include "time.h"
 
 static int xResolution;
 static int yResolution;
