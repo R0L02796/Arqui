@@ -15,7 +15,7 @@ static Color black = {0, 0, 0};
 void startSnake(){
     getSize(&xResolution, &yResolution);	
 
-   	FruitStruct fruits = {xResolution/rand(), yResolution/rand()};
+   	FruitStruct fruits = {xResolution/15, yResolution/32};
 
 	Fruit fruit = &fruits;
 
