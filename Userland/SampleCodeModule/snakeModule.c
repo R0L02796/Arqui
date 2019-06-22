@@ -25,7 +25,7 @@ void startSnake(){
 
 void printInitScreenSnk(Fruit fruit) {
 	clearScreen();
-	printFrame();
+	printFrameSnk();
 	printFruit(white, fruit);
 }
 

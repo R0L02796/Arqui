@@ -5,6 +5,7 @@
 #include "videoModule.h"
 #include "pongModule.h"
 #include "soundModule.h"
+#include "snakeModule.h"
 
 int on = 1;
 void initShell(){
