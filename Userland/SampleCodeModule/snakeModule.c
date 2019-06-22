@@ -3,8 +3,7 @@
 #include "stdlib.h"
 #include "timeModule.h"
 #include "soundModule.h"
-#include "stdio.h"
-#include "time.h"
+
 
 static int xResolution;
 static int yResolution;
@@ -14,10 +13,9 @@ static Color black = {0, 0, 0};
 
 
 void startSnake(){
-	srand(time(NULL));
     getSize(&xResolution, &yResolution);	
 
-   	FruitStruct fruits = {xResolution*rand(), yResolution/rand()};
+   	FruitStruct fruits = {xResolution/rand(), yResolution/rand()};
 
 	Fruit fruit = &fruits;
 
