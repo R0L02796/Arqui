@@ -29,6 +29,7 @@ void startSnake(){
 
 	Snake snake = &snakes;
 	Fruit fruit = &fruits;
+		putStr("wasa");
 
 	addPart(snake);
 	addPart(snake);
