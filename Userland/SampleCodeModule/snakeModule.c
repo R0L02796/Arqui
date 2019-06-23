@@ -36,7 +36,6 @@ void startSnake(){
 	printSnake(white, snake->head);
 	while (1)
 	{
-		putStr("  wasa  ");
 	}
 	
 //    printInitScreenSnk(fruit,snake);
