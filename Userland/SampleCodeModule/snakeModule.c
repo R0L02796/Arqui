@@ -10,6 +10,9 @@
 static int xResolution;
 static int yResolution;
 
+static int stepV; 
+static int stepH; 
+
 static Color white = {255, 255, 255};
 static Color black = {0, 0, 0};
 
@@ -17,14 +20,17 @@ static Color black = {0, 0, 0};
 void startSnake(){
     getSize(&xResolution, &yResolution);	
 
-	SnakePartStruct Parts = {1,NULL,xResolution/2,yResolution/2};
+	stepV = yResolution/50;
+	stepH = xResolution/50;
+
+	SnakePartStruct Parts = {1,NULL,25*stepH,25*stepV};
 	SnakePartStruct tail = {0,NULL,Parts.posX,Parts.posY-10};
 	SnakePartStruct tail2 = {0,NULL,tail.posX,tail.posY-10};
 
 
 
 	SnakeStruct snakes = {&Parts,STOP,ADV};
-   	FruitStruct fruits = {xResolution/15, yResolution/1.3};
+   	FruitStruct fruits = {10*stepH, 37*stepV};
 
 	Snake snake = &snakes;
 	Fruit fruit = &fruits;
@@ -134,8 +140,8 @@ void moveSnake(Snake s){
 	printSnake(black,h);
 	int x=h->posX;
 	int y=h->posY;
-	h->posX=h->posX + s->dirX*STEP;
-	h->posY=h->posY + s->dirY*STEP;
+	h->posX=h->posX + s->dirX*stepH;
+	h->posY=h->posY + s->dirY*stepV;
 	moveParts(h->tail,x,y);
 	printSnake(white,h);
 }

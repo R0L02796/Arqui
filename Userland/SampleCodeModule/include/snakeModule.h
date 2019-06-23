@@ -15,8 +15,6 @@
 #define RET -1
 #define STOP 0
 
-#define STEP 20
-
 typedef struct fruit{
 	int posX;
 	int posY;
