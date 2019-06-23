@@ -98,10 +98,10 @@ void actSnk(char command,Snake snake) {
 					switch(command)
 					{
 						case SUP:
-							moveSnakeOnAct(snake, STOP, ADV);
+							moveSnakeOnAct(snake, STOP, RET);
 							break;
 						case SDOWN:
-							moveSnakeOnAct(snake, STOP, RET);
+							moveSnakeOnAct(snake, STOP, ADV);
 							break;
 						default:
 							return;
@@ -110,10 +110,10 @@ void actSnk(char command,Snake snake) {
 					switch(command)
 					{
 						case SUP:
-							moveSnakeOnAct(snake, STOP, ADV);
+							moveSnakeOnAct(snake, STOP, RET);
 							break;
 						case SDOWN:
-							moveSnakeOnAct(snake, STOP, RET);
+							moveSnakeOnAct(snake, STOP, ADV);
 							break;
 						default:
 							return;
