@@ -109,6 +109,9 @@ int playSnk(Fruit fruit, Snake snake) {
 			int now = hrToSec(getHour(),getMinute(),getSecond());
 			if((now - startTime) >= 15)
 			{
+				doBeep();
+				wait(5);
+				noBeep();
 				speed--;
 				startTime = now;
 				switch (speed)
@@ -333,7 +336,7 @@ int snakeStatus(Snake snk, Fruit fruit){
 
 void printLoseScreen()
 {
-	setCursor((xResolution/2), 300);
+	setCursor(20*stepH, 300);
 	putStr("      GAME OVER     ");
 }
 
