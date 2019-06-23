@@ -80,7 +80,7 @@ int playSnk(Fruit fruit, Snake snake) {
 			if (speed>0)
 				speed--;
 			startTime = now;
-			addPart(snake);
+			addPart(snake,"wasa");
 		}
 
 		char command = getChar();
