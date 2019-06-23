@@ -33,11 +33,6 @@ void startSnake(){
 	addPart(snake);
 	addPart(snake);
 	addPart(snake);
-
-	while (1)
-	{
-		/* code */
-	}
 	
     printInitScreenSnk(fruit,snake);
 
@@ -212,12 +207,10 @@ void addPart(Snake snk){
 SnakePart addPartrec(SnakePart current, int x, int y){
 	if (current->tail==NULL)
 	{
-		putStr("en if");
 		SnakePartStruct P = {NULL,current->posX + x*stepH , current->posX + y*stepV};
 		current->tail=&P;
 		return current;	
 	}
-	putStr("  en rec  ");
 	current->tail=addPartrec(current->tail, x, y);
 	return current;
 }
