@@ -52,14 +52,14 @@ void startSnake(){
 		return;
 	}
 	drawRectangle(black, xResolution/2, 20, (xResolution/2)-60, 10);
-
-	int status = playSnk(fruit, snake);	
+	int startPts = hrToSec(getHour(),getMinute(),getSecond());
+	int status = playSnk(fruit, snake,startPts);	
 	if (status==1)
 	{
 		doBeep();
 		wait(15);
 		noBeep();
-		printLoseScreen();
+		printLoseScreen(hrToSec(getHour(),getMinute(),getSecond()) - startPts);
 		wait(25);
 		return;
 	}
@@ -78,7 +78,7 @@ int hrToSec(int h, int m, int s){
 	return h*3600+m*60+s;
 }
 
-int playSnk(Fruit fruit, Snake snake) {
+int playSnk(Fruit fruit, Snake snake, int startPts) {
 	SnakePartStruct Part4 = {"d",NULL,25*stepH,25*stepV};
 	SnakePartStruct Part5 = {"e",NULL,25*stepH,25*stepV};
 	SnakePartStruct Part6 = {"f",NULL,25*stepH,25*stepV};
@@ -101,8 +101,7 @@ int playSnk(Fruit fruit, Snake snake) {
 
 	int status=0;
 	int playing = 1;
-	int startTime = hrToSec(getHour(),getMinute(),getSecond());
-	int startPts = hrToSec(getHour(),getMinute(),getSecond());
+	int startTime = startPts;
 	int speed = 15;
 	while (playing) {
 		wait(speed);
@@ -171,7 +170,7 @@ int playSnk(Fruit fruit, Snake snake) {
 		if (command == '\b') {
 			playing = 0;
 		}
-		int pts = startPts - hrToSec(getHour(),getMinute(),getSecond());
+		int pts =hrToSec(getHour(),getMinute(),getSecond()) - startPts;
 		setCursor(50, 30);
 		char points[1];
 		decToStr(pts, points);
@@ -338,10 +337,14 @@ int snakeStatus(Snake snk, Fruit fruit){
 	return 0;
 }
 
-void printLoseScreen()
+void printLoseScreen(int pts)
 {
 	setCursor(20*stepH, 300);
 	putStr("      GAME OVER     ");
+	setCursor(2*stepH, 300 + stepV);
+	char points[1];
+	decToStr(pts, points);
+	putStr(points);
 }
 
 void moveFruit(int i,Fruit fruit,int px [20], int py [20] )

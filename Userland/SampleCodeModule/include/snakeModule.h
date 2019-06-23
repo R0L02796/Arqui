@@ -57,7 +57,7 @@ void printFrameSnk();
 void printFruit(Color color, Fruit fruit);
 
 //Starts game
-int playSnk(Fruit fruit, Snake snake) ;
+int playSnk(Fruit fruit, Snake snake, int startPts) ;
 
 //Moves snake on act
 void moveSnakeOnAct(Snake s, int newDirX, int newDirY);
@@ -81,7 +81,7 @@ void printPts(int point);
 //Transforms time in seconds
 int hrToSec(int h, int m, int s);
 
-void printLoseScreen();
+void printLoseScreen(int pts);
 
 void moveFruit(int i,Fruit fruit,int px [20], int py [20] );
 
