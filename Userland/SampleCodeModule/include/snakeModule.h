@@ -21,6 +21,7 @@ typedef struct fruit{
 } FruitStruct;
 
 typedef struct snakePart{
+	char * name; 
 	struct snakePart * tail;
 	int posX;
 	int posY;
@@ -67,9 +68,9 @@ void moveSnake(Snake s);
 void actSnk(char command, Snake snake);
 
 //Adds part
-void addPart(Snake s);
+void addPart(Snake s, char * n);
 
-SnakePart addPartrec(SnakePart current, int x, int y);
+SnakePart addPartrec(SnakePart current, int x, int y, char * n);
 
 //Prints points
 void printPts(int point);
