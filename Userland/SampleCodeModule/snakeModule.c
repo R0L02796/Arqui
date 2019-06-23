@@ -66,7 +66,9 @@ int playSnk(Fruit fruit, Snake snake) {
 	int exitStatus = 0;
 	while (playing) {
 		wait(15);
-	//	printPts((int)getSecond());
+		//printPts((int)
+		getSecond();
+		//);
 		putStr("		wasa");
 		char command = getChar();
 		if (command == '\b') {
