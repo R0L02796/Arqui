@@ -23,21 +23,15 @@ void startSnake(){
 	stepV = yResolution/50;
 	stepH = xResolution/50;
 
-	SnakePartStruct Parts = {1,NULL,25*stepH,25*stepV};
-	SnakePartStruct tail = {0,NULL,Parts.posX,Parts.posY-10};
-	SnakePartStruct tail2 = {0,NULL,tail.posX,tail.posY-10};
-
-
-
+	SnakePartStruct Parts = {NULL,25*stepH,25*stepV};
 	SnakeStruct snakes = {&Parts,STOP,ADV};
    	FruitStruct fruits = {10*stepH, 37*stepV};
 
 	Snake snake = &snakes;
 	Fruit fruit = &fruits;
 
-	addPart(snake->head,&tail);
-	addPart(snake->head,&tail2);
-
+	addPart(snake);
+	addPart(snake);
 
     printInitScreenSnk(fruit,snake);
 
@@ -78,13 +72,12 @@ int playSnk(Fruit fruit, Snake snake) {
 		int now = hrToSec(getHour(),getMinute(),getSecond());
 		if((now - startTime) >= 15)
 		{
-			speed--;
+			if (speed>0)
+				speed--;
 			startTime = now;
+			addPart(snake);
 		}
-		setCursor(50, 30);
-		char str[1];
-		decToStr(speed,str);
-		putStr(str);
+
 		char command = getChar();
 		if (command == '\b') {
 			playing = 0;
@@ -155,22 +148,6 @@ void actSnk(char command,Snake snake) {
 	}
 }
 
-void moveSnakeOnAct(Snake s, int newDirX, int newDirY) {	
-	s->dirX=newDirX;
-	s->dirY=newDirY;
-}
-
-void moveSnake(Snake s){
-	SnakePart h = s->head;	
-	printSnake(black,h);
-	int x=h->posX;
-	int y=h->posY;
-	h->posX=h->posX + s->dirX*stepH;
-	h->posY=h->posY + s->dirY*stepV;
-	moveParts(h->tail,x,y);
-	printSnake(white,h);
-}
-
 void moveParts(SnakePart curr,int x, int y){
 	if(curr==NULL)
 		return;
@@ -206,12 +183,30 @@ void printFrameSnk() {
 	drawRectangle(white, 2, yResolution/2, 1, (yResolution/2)-2);
 	drawRectangle(white, xResolution-2, yResolution/2, 1, (yResolution/2)-2);
 }
-void addPart(SnakePart head, SnakePart part){
-	SnakePart current=head;
+
+
+void addPart(Snake s){
+	SnakePart current=s->head;
 	while (current->tail!=NULL)
 	{
 		current=current->tail;
 	}
-	current->tail = part;
+	SnakePartStruct Parts = {NULL,current->posX + s->dirX*stepH,current->posY + s->dirY*stepV};
+	current->tail = &Parts;
 }
 
+void moveSnakeOnAct(Snake s, int newDirX, int newDirY) {	
+	s->dirX=newDirX;
+	s->dirY=newDirY;
+}
+
+void moveSnake(Snake s){
+	SnakePart h = s->head;	
+	printSnake(black,h);
+	int x=h->posX;
+	int y=h->posY;
+	h->posX=h->posX + s->dirX*stepH;
+	h->posY=h->posY + s->dirY*stepV;
+	moveParts(h->tail,x,y);
+	printSnake(white,h);
+}
