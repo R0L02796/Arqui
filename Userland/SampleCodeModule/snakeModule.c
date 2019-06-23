@@ -271,7 +271,7 @@ void printSnake(Color color, SnakePart s) {
 	SnakePart aux = s;
 	while (aux!=NULL)
 	{
-		drawRectangle(color, aux->posX, aux->posY, stepH, stepV);
+		drawRectangle(color, aux->posX, aux->posY, 4, stepV);
 		aux=aux->tail;
 	}
 }
