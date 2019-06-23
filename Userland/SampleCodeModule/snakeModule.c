@@ -222,7 +222,7 @@ SnakePart addPartrec(SnakePart current, int x, int y,char * n){
 		putStr((current->tail)->name);
 		return current;	
 	}
-	putStr("   sig    ");
+	putStr(current->name);
 	current->tail=addPartrec(current->tail, x, y,n);
 	return current;
 }
