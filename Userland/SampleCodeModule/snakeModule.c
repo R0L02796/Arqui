@@ -188,13 +188,13 @@ void printFrameSnk() {
 }
 
 
-void addPart(Snake s){
-	SnakePart current=s->head;
+void addPart(Snake snk){
+	SnakePart current=snk->head;
 	while (current->tail!=NULL)
 	{
 		current=current->tail;
 	}
-	SnakePartStruct P = {NULL,current->posX + s->dirX*stepH,current->posY + s->dirY*stepV};
+	SnakePartStruct P = {NULL,current->posX + snk->dirX, current->posX + snk->dirY};
 	current->tail = &P;
 }
 
