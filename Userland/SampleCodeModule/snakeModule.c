@@ -24,9 +24,12 @@ void startSnake(){
 	stepH = xResolution/50;
 
 	SnakePartStruct Parts = {"head",NULL,25*stepH,25*stepV};
-	SnakePartStruct Parta = {"a",NULL,25*stepH,25*stepV};
-	SnakePartStruct Partb = {"b",NULL,25*stepH,25*stepV};
-	SnakePartStruct Partc = {"c",NULL,25*stepH,25*stepV};
+	SnakePartStruct Part1 = {"a",NULL,25*stepH,25*stepV};
+	SnakePartStruct Part2 = {"b",NULL,25*stepH,25*stepV};
+	SnakePartStruct Part3 = {"c",NULL,25*stepH,25*stepV};
+	
+
+
 
 	SnakeStruct snakes = {&Parts,STOP,RET};
    	FruitStruct fruits = {10*stepH, 37*stepV};
@@ -34,9 +37,9 @@ void startSnake(){
 	Snake snake = &snakes;
 	Fruit fruit = &fruits;
 
-	addPart(snake, &Parta);
-	addPart(snake, &Partb);
-	addPart(snake, &Partc);
+	addPart(snake, &Part1);
+	addPart(snake, &Part2);
+	addPart(snake, &Part3);
 
     printInitScreenSnk(fruit,snake);
 
@@ -68,20 +71,86 @@ int hrToSec(int h, int m, int s){
 }
 
 int playSnk(Fruit fruit, Snake snake) {
+	SnakePartStruct Part4 = {"d",NULL,25*stepH,25*stepV};
+	SnakePartStruct Part5 = {"e",NULL,25*stepH,25*stepV};
+	SnakePartStruct Part6 = {"f",NULL,25*stepH,25*stepV};
+	SnakePartStruct Part7 = {"g",NULL,25*stepH,25*stepV};
+	SnakePartStruct Part8 = {"h",NULL,25*stepH,25*stepV};
+	SnakePartStruct Part9 = {"i",NULL,25*stepH,25*stepV};
+	SnakePartStruct Part10 = {"j",NULL,25*stepH,25*stepV};
+	SnakePartStruct Part11 = {"k",NULL,25*stepH,25*stepV};
+	SnakePartStruct Part12 = {"l",NULL,25*stepH,25*stepV};
+	SnakePartStruct Part13 = {"m",NULL,25*stepH,25*stepV};
+	SnakePartStruct Part14 = {"n",NULL,25*stepH,25*stepV};
+	SnakePartStruct Part15 = {"o",NULL,25*stepH,25*stepV};
+	SnakePartStruct Part16 = {"o",NULL,25*stepH,25*stepV};
+	SnakePartStruct Part17 = {"o",NULL,25*stepH,25*stepV};
+	SnakePartStruct Part18 = {"o",NULL,25*stepH,25*stepV};
+
 	int playing = 1;
 	int exitStatus = 0;
 	int startTime = hrToSec(getHour(),getMinute(),getSecond());
 	int speed = 15;
 	while (playing) {
 		wait(speed);
-		int now = hrToSec(getHour(),getMinute(),getSecond());
-		if((now - startTime) >= 15)
-		{
-			if (speed>0)
+		if (speed>0){
+			int now = hrToSec(getHour(),getMinute(),getSecond());
+			if((now - startTime) >= 15)
+			{
 				speed--;
-			startTime = now;
+				startTime = now;
+				switch (speed)
+				{
+				case 1:
+					addPart(snake,&Part4);
+					break;
+				case 2:
+					addPart(snake, &Part5);
+					break;
+				case 3:
+					addPart(snake, &Part6);
+					break;
+				case 4:
+					addPart(snake, &Part7);
+					break;
+				case 5:
+					addPart(snake, &Part8);
+					break;
+				case 6:
+					addPart(snake, &Part9);
+					break;
+				case 7:
+					addPart(snake, &Part10);
+					break;
+				case 8:
+					addPart(snake, &Part11);
+					break;
+				case 9:
+					addPart(snake, &Part12);
+					break;
+				case 10:
+					addPart(snake, &Part13);
+					break;
+				case 11:
+					addPart(snake, &Part14);
+					break;
+				case 12:
+					addPart(snake, &Part15);
+					break;
+				case 13:
+					addPart(snake, &Part16);
+					break;
+				case 14:
+					addPart(snake, &Part17);
+					break;
+				case 15:
+					addPart(snake, &Part18);
+					break;
+				default:
+					break;
+				}
+			}
 		}
-
 		char command = getChar();
 		if (command == '\b') {
 			playing = 0;
