@@ -23,16 +23,16 @@ void startSnake(){
 	stepV = yResolution/50;
 	stepH = xResolution/50;
 
-	SnakePartStruct Parts = {NULL,25*stepH,25*stepV};
+	SnakePartStruct Parts = {"head",NULL,25*stepH,25*stepV};
 	SnakeStruct snakes = {&Parts,STOP,RET};
    	FruitStruct fruits = {10*stepH, 37*stepV};
 
 	Snake snake = &snakes;
 	Fruit fruit = &fruits;
 
-	addPart(snake);
-	addPart(snake);
-	addPart(snake);
+	addPart(snake,"a");
+	addPart(snake,"b");
+	addPart(snake,"c");
 	printSnake(white, snake->head);
 	while (1)
 	{
@@ -170,9 +170,9 @@ void printInitScreenSnk(Fruit fruit,Snake snake) {
 void printSnake(Color color, SnakePart s) {
 	SnakePart aux = s;
 	putStr("  entro  ");
-	while (aux->tail!=NULL)
+	while (aux!=NULL)
 	{
-		putStr("  en while  ");
+		putStr(aux->name);
 		drawRectangle(color, aux->posX, aux->posY, 4, 4);
 		aux=aux->tail;
 	}
@@ -202,18 +202,18 @@ void addPart(Snake snk){
 	putStr("esta ");
 }
 */
-void addPart(Snake snk){
-	snk->head=addPartrec(snk->head,snk->dirX,snk->dirY);
+void addPart(Snake snk, char * n){
+	snk->head=addPartrec(snk->head,snk->dirX,snk->dirY,n);
 }
 
-SnakePart addPartrec(SnakePart current, int x, int y){
+SnakePart addPartrec(SnakePart current, int x, int y,char * n){
 	if (current->tail==NULL)
 	{
-		SnakePartStruct P = {NULL,current->posX + x*stepH , current->posX + y*stepV};
+		SnakePartStruct P = {n,NULL,current->posX + x*stepH , current->posX + y*stepV};
 		current->tail=&P;
 		return current;	
 	}
-	current->tail=addPartrec(current->tail, x, y);
+	current->tail=addPartrec(current->tail, x, y,n);
 	return current;
 }
 
