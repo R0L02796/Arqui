@@ -30,8 +30,13 @@ void startSnake(){
 	Snake snake = &snakes;
 	Fruit fruit = &fruits;
 
+	putStr("  add  a  ");
 	addPart(snake,"a");
+		putStr("  add  b  ");
+
 	addPart(snake,"b");
+	putStr("  add  c  ");
+
 	addPart(snake,"c");
 //	printSnake(white, snake->head);
 	while (1)
