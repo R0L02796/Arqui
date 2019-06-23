@@ -71,12 +71,16 @@ int hrToSec(int h, int m, int s){
 int playSnk(Fruit fruit, Snake snake) {
 	int playing = 1;
 	int exitStatus = 0;
+	int startTime = hrToSec(getHour(),getMinute(),getSecond());
+	int speed = 15;
 	while (playing) {
-		wait(15);
-		setCursor(50, 30);
-		char points[1];
-		decToStr(hrToSec(getHour(),getMinute(),getSecond()), points);
-		putStr(points);
+		wait(speed);
+		int now = hrToSec(getHour(),getMinute(),getSecond());
+		if((now - startTime) >= 15)
+		{
+			speed--;
+			startTime = now;
+		}
 		char command = getChar();
 		if (command == '\b') {
 			playing = 0;
