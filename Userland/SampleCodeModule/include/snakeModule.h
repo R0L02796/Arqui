@@ -83,7 +83,7 @@ int hrToSec(int h, int m, int s);
 
 void printLoseScreen();
 
-void moveFruit(int i,Fruit fruit);
+void moveFruit(int i,Fruit fruit,int px [20], int py [20] );
 
 
 
