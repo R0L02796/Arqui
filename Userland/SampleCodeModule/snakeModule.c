@@ -54,7 +54,7 @@ void startSnake(){
 	int exitStatus = playSnk(fruit, snake);	
 
 }
-void printpts(int point) {
+void printPts(int point) {
 	setCursor(50, 30);
 	char points[1];
 	decToStr(point, points);
