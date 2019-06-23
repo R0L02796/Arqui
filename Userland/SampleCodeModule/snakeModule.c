@@ -102,6 +102,7 @@ int playSnk(Fruit fruit, Snake snake) {
 	int status=0;
 	int playing = 1;
 	int startTime = hrToSec(getHour(),getMinute(),getSecond());
+	int startPts = hrToSec(getHour(),getMinute(),getSecond());
 	int speed = 15;
 	while (playing) {
 		wait(speed);
@@ -170,6 +171,8 @@ int playSnk(Fruit fruit, Snake snake) {
 		if (command == '\b') {
 			playing = 0;
 		}
+		int pts = startPts - hrToSec(getHour(),getMinute(),getSecond());
+		printPts(pts);
 		actSnk(command,snake);
 		moveSnake(snake);
 		status = snakeStatus(snake, fruit);
@@ -181,6 +184,7 @@ int playSnk(Fruit fruit, Snake snake) {
 
 		if(status==2)
 			{
+			status=0;
 			if(cont > 20)
 			{
 				playing=0;
@@ -271,7 +275,7 @@ void printSnake(Color color, SnakePart s) {
 	SnakePart aux = s;
 	while (aux!=NULL)
 	{
-		drawRectangle(color, aux->posX, aux->posY, 4, stepV);
+		drawRectangle(color, aux->posX, aux->posY, 4, 4);
 		aux=aux->tail;
 	}
 }
