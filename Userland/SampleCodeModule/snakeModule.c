@@ -119,7 +119,6 @@ void actSnk(char command,Snake snake) {
 							return;
 					}
 				default:
-					putStr("error");
 					return;
 			}
 	}
