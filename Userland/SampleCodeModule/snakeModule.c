@@ -32,7 +32,11 @@ void startSnake(){
 
 	addPart(snake);
 	addPart(snake);
-
+	while (1)
+	{
+		/* code */
+	}
+	
     printInitScreenSnk(fruit,snake);
 
 	char * str = "\n          ~~~WELCOME TO LENIAS SNAKE, PRESS ENTER TO PLAY OR PRESS BACKSPACE TO QUIT. YOU MAY QUIT ANYTIME DURING GAME~~~";
@@ -191,10 +195,12 @@ void addPart(Snake snk){
 	SnakePart current=snk->head;
 	while (current->tail!=NULL)
 	{
+		putStr(" tail ");
 		current=current->tail;
 	}
 	SnakePartStruct P = {NULL,current->posX + snk->dirX, current->posX + snk->dirY};
 	current->tail = &P;
+	putStr("esta ");
 }
 
 void moveSnakeOnAct(Snake s, int newDirX, int newDirY) {	
