@@ -263,6 +263,8 @@ void printInitScreenSnk(Fruit fruit,Snake snake) {
 }
 void printSnake(Color color, SnakePart s) {
 	SnakePart aux = s;
+	drawRectangle(color, aux->posX, aux->posY, 4, 4);
+	aux=aux->tail;
 	while (aux!=NULL)
 	{
 		drawRectangle(color, aux->posX, aux->posY, 4, 4);
