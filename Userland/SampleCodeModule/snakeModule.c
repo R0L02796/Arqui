@@ -34,20 +34,11 @@ void startSnake(){
 	Snake snake = &snakes;
 	Fruit fruit = &fruits;
 
-	putStr("  add  a  ");
 	addPart(snake, &Parta);
-		putStr("  add  b  ");
-
 	addPart(snake, &Partb);
-	putStr("  add  c  ");
-
 	addPart(snake, &Partc);
-//	printSnake(white, snake->head);
-	while (1)
-	{
-	}
-	
-//    printInitScreenSnk(fruit,snake);
+
+    printInitScreenSnk(fruit,snake);
 
 	char * str = "\n          ~~~WELCOME TO LENIAS SNAKE, PRESS ENTER TO PLAY OR PRESS BACKSPACE TO QUIT. YOU MAY QUIT ANYTIME DURING GAME~~~";
 	putStr(str);
@@ -177,10 +168,8 @@ void printInitScreenSnk(Fruit fruit,Snake snake) {
 }
 void printSnake(Color color, SnakePart s) {
 	SnakePart aux = s;
-	putStr("  entro  ");
 	while (aux!=NULL)
 	{
-		putStr(aux->name);
 		drawRectangle(color, aux->posX, aux->posY, 4, 4);
 		aux=aux->tail;
 	}
