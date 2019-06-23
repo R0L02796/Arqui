@@ -60,7 +60,7 @@ void startSnake(){
 		wait(15);
 		noBeep();
 		printLoseScreen(hrToSec(getHour(),getMinute(),getSecond()) - startPts);
-		wait(25);
+		wait(40);
 		return;
 	}
 }
