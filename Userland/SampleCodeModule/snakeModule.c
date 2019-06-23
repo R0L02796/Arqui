@@ -214,8 +214,12 @@ void addPart(Snake snk, char * n){
 SnakePart addPartrec(SnakePart current, int x, int y,char * n){
 	if (current->tail==NULL)
 	{
-		SnakePartStruct P = {n,NULL,current->posX + x*stepH , current->posX + y*stepV};
-		current->tail=&P;
+		SnakePart P = malloc(sizeof(SnakePartStruct));
+		P->name=n;
+		P->tail=NULL;
+		P->posX=current->posX + x*stepH;
+		P->posY=current->posX + y*stepV;
+		current->tail= P;
 		putStr(" devolvio:");
 		putStr(current->name);
 		putStr(" con cola:");
