@@ -24,12 +24,11 @@ void startSnake(){
 	stepH = xResolution/50;
 
 	SnakePartStruct Parts = {NULL,25*stepH,25*stepV};
-	SnakeStruct snakes = {&Parts,STOP,ADV};
+	SnakeStruct snakes = {&Parts,STOP,RET};
    	FruitStruct fruits = {10*stepH, 37*stepV};
 
 	Snake snake = &snakes;
 	Fruit fruit = &fruits;
-		putStr("wasa");
 
 	addPart(snake);
 	addPart(snake);
@@ -186,17 +185,13 @@ void printFrameSnk() {
 
 
 void addPart(Snake s){
-			putStr("on add");
 	SnakePart current=s->head;
 	while (current->tail!=NULL)
 	{
-		putStr("on if");
 		current=current->tail;
 	}
-	SnakePartStruct Parts = {NULL,current->posX + s->dirX*stepH,current->posY + s->dirY*stepV};
-	current->tail = &Parts;
-		putStr("on ret");
-
+	SnakePartStruct P = {NULL,current->posX + s->dirX*stepH,current->posY + s->dirY*stepV};
+	current->tail = &P;
 }
 
 void moveSnakeOnAct(Snake s, int newDirX, int newDirY) {	
