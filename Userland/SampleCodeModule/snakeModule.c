@@ -64,6 +64,10 @@ void printPts(int point) {
 	return;
 }
 
+int hrToSec(int h, int m, int s){
+	return h*3600+m*60+s;
+}
+
 int playSnk(Fruit fruit, Snake snake) {
 	int playing = 1;
 	int exitStatus = 0;
@@ -71,7 +75,7 @@ int playSnk(Fruit fruit, Snake snake) {
 		wait(15);
 		setCursor(50, 30);
 		char points[1];
-		decToStr((int)getSecond(), points);
+		decToStr(hrToSec(getHour(),getMinute(),getSecond()), points);
 		putStr(points);
 		char command = getChar();
 		if (command == '\b') {
