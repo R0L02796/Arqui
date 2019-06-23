@@ -341,7 +341,7 @@ void printLoseScreen(int pts)
 {
 	setCursor(20*stepH, 300);
 	putStr("      GAME OVER     ");
-	setCursor(23*stepH, 300 + stepV);
+	setCursor(24*stepH, 300 + stepV);
 	char points[1];
 	decToStr(pts, points);
 	putStr(points);
