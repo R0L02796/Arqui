@@ -175,7 +175,7 @@ int playSnk(Fruit fruit, Snake snake) {
 
 		if(status==2)
 			{
-			if(cont <= 20)
+			if(cont > 20)
 			{
 				playing=0;
 				return status;
