@@ -1,3 +1,4 @@
+
 #include "snakeModule.h"
 #include "videoModule.h"
 #include "stdlib.h"
@@ -17,11 +18,12 @@ void startSnake(){
     getSize(&xResolution, &yResolution);	
 
 	SnakePartStruct Parts = {1,NULL,xResolution/2,yResolution/2};
-	SnakePartStruct tail = {0,NULL,Parts.posX-20,Parts.posY};
-	SnakePartStruct tail2 = {0,NULL,tail.posX-20,tail.posY};
+	SnakePartStruct tail = {0,NULL,Parts.posX,Parts.posY-10};
+	SnakePartStruct tail2 = {0,NULL,tail.posX,tail.posY-10};
 
 
-	SnakeStruct snakes = {&Parts,SUP};
+
+	SnakeStruct snakes = {&Parts,STOP,ADV};
    	FruitStruct fruits = {xResolution/15, yResolution/1.3};
 
 	Snake snake = &snakes;
@@ -57,68 +59,94 @@ int playSnk(Fruit fruit, Snake snake) {
 			playing = 0;
 		}
 		actSnk(command,snake);
-
+		moveSnake(snake);
 	}
 	return exitStatus;
 }
 
 void actSnk(char command,Snake snake) {
-	switch (snake->dir)
+	switch (snake->dirY)
 	{
-		case SUP: 
+		case ADV: 
 			switch(command)
 			{
 				case SRIGHT:
-					moveSnake(snake, SRIGHT);
+					moveSnakeOnAct(snake, ADV, STOP);
 					break;
 				case SLEFT:
-					moveSnake(snake, SLEFT);
+					moveSnakeOnAct(snake, RET, STOP);
 					break;
 				default:
 					return;
 			}
-		case SDOWN: 
+		case RET: 
 			switch(command)
 			{
 				case SRIGHT:
-					moveSnake(snake, SRIGHT);
+					moveSnakeOnAct(snake, ADV, STOP);
 					break;
 				case SLEFT:
-					moveSnake(snake, SLEFT);
+					moveSnakeOnAct(snake, RET, STOP);
 					break;
 				default:
 					return;
 			}
-		case SRIGHT: 
-			switch(command)
+		case STOP:
+			switch (snake->dirX)
 			{
-				case SUP:
-					moveSnake(snake, SUP);
-					break;
-				case SDOWN:
-					moveSnake(snake, SDOWN);
-					break;
+				case ADV: 
+					switch(command)
+					{
+						case SUP:
+							moveSnakeOnAct(snake, STOP, ADV);
+							break;
+						case SDOWN:
+							moveSnakeOnAct(snake, STOP, RET);
+							break;
+						default:
+							return;
+					}
+				case RET: 
+					switch(command)
+					{
+						case SUP:
+							moveSnakeOnAct(snake, STOP, ADV);
+							break;
+						case SDOWN:
+							moveSnakeOnAct(snake, STOP, RET);
+							break;
+						default:
+							return;
+					}
 				default:
+					putStr("error");
 					return;
 			}
-		case SLEFT: 
-			switch(command)
-			{
-				case SUP:
-					moveSnake(snake, SUP);
-					break;
-				case SDOWN:
-					moveSnake(snake, SDOWN);
-					break;
-				default:
-					return;
-			}
-	
 	}
 }
 
-void moveSnake(Snake s, int newDir) {	
+void moveSnakeOnAct(Snake s, int newDirX, int newDirY) {	
+	s->dirX=newDirX;
+	s->dirY=newDirY;
+}
 
+void moveSnake(Snake s){
+	SnakePart h = s->head;	
+	printSnake(black,h);
+	int x=h->posX;
+	int y=h->posY;
+	h->posX=h->posX + s->dirX*STEP;
+	h->posY=h->posY + s->dirY*STEP;
+	moveParts(h->tail,x,y);
+	printSnake(white,h);
+}
+
+void moveParts(SnakePart curr,int x, int y){
+	if(curr==NULL)
+		return;
+	moveParts(curr->tail,curr->posX,curr->posY);
+	curr->posX=x;
+	curr->posY=y;
 }
 
 void printInitScreenSnk(Fruit fruit,Snake snake) {

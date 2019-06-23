@@ -11,6 +11,10 @@
 #define SRIGHT 100
 #define SLEFT 97
 
+#define ADV 1
+#define RET -1
+#define STOP 0
+
 #define STEP 20
 
 typedef struct fruit{
@@ -27,7 +31,8 @@ typedef struct snakePart{
 
 typedef struct snake{
 	SnakePartStruct * head;
-	int dir;
+	int dirX;
+	int dirY;
 }SnakeStruct;
 
 typedef SnakePartStruct * SnakePart;
@@ -43,6 +48,9 @@ void printSnake(Color color, SnakePart snake);
 // Displays initial screen of game
 void printInitScreenSnk(Fruit fruit, Snake snake);
 
+//moves all parts that aren't head
+void moveParts(SnakePart curr,int x, int y);
+
 // Prints game's limits
 void printFrameSnk();
 
@@ -52,8 +60,11 @@ void printFruit(Color color, Fruit fruit);
 //Starts game
 int playSnk(Fruit fruit, Snake snake) ;
 
+//moves snake on act
+void moveSnakeOnAct(Snake s, int newDirX, int newDirY);
+
 //moves snake
-void moveSnake(Snake s, int step);
+void moveSnake(Snake s);
 
 // Recives an action from the player to move and executes it
 void actSnk(char command, Snake snake);
