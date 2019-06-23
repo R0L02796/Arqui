@@ -54,6 +54,8 @@ void startSnake(){
 	int exitStatus = playSnk(fruit, snake);	
 
 }
+
+//misterio porque no anda
 void printPts(int point) {
 	setCursor(50, 30);
 	char points[1];
@@ -67,7 +69,10 @@ int playSnk(Fruit fruit, Snake snake) {
 	int exitStatus = 0;
 	while (playing) {
 		wait(15);
-		printPts((int)getSecond());	
+		setCursor(50, 30);
+		char points[1];
+		decToStr((int)getSecond(), points);
+		putStr(points);
 		char command = getChar();
 		if (command == '\b') {
 			playing = 0;
