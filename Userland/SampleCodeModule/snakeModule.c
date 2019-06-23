@@ -162,12 +162,16 @@ void printInitScreenSnk(Fruit fruit,Snake snake) {
 			putStr("on print");
 
 	printSnake(white, snake->head);
+				putStr("sali");
+
 	printFruit(white, fruit);
 }
 void printSnake(Color color, SnakePart s) {
-	if (s==NULL)
+	if (s==NULL){
 		return;
-			putStr("on printsnk");
+					putStr("saliendoooo");
+	}
+			putStr("entre  ");
 	drawRectangle(color,s->posX, s->posY, 4,4);
 	printSnake(color,s->tail);
 }
