@@ -65,6 +65,8 @@ void moveSnakeOnAct(Snake s, int newDirX, int newDirY);
 //Moves snake
 void moveSnake(Snake s);
 
+int snakeStatus(Snake snk, Fruit fruit);
+
 // Recives an action from the player to move and executes it
 void actSnk(char command, Snake snake);
 
@@ -78,6 +80,10 @@ void printPts(int point);
 
 //Transforms time in seconds
 int hrToSec(int h, int m, int s);
+
+void printLoseScreen();
+
+void moveFruit(int i,Fruit fruit);
 
 
 

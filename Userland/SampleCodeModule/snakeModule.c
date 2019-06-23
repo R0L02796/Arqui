@@ -53,8 +53,9 @@ void startSnake(){
 	}
 	drawRectangle(black, xResolution/2, 20, (xResolution/2)-60, 10);
 
-	int exitStatus = playSnk(fruit, snake);	
-
+	int status = playSnk(fruit, snake);	
+	if (status==1)
+		printLoseScreen();
 }
 
 //misterio porque no anda
@@ -87,8 +88,8 @@ int playSnk(Fruit fruit, Snake snake) {
 	SnakePartStruct Part17 = {"o",NULL,25*stepH,25*stepV};
 	SnakePartStruct Part18 = {"o",NULL,25*stepH,25*stepV};
 
+	int status=0;
 	int playing = 1;
-	int exitStatus = 0;
 	int startTime = hrToSec(getHour(),getMinute(),getSecond());
 	int speed = 15;
 	while (playing) {
@@ -157,8 +158,20 @@ int playSnk(Fruit fruit, Snake snake) {
 		}
 		actSnk(command,snake);
 		moveSnake(snake);
+		status = snakeStatus(snake, fruit);
+		if (status==1)
+		{
+			playing=0;
+			return status;
+		}
+		int cont=0;
+		if(status == 2)
+		{
+			cont++;
+			moveFruit(cont,fruit);
+		}
 	}
-	return exitStatus;
+	return status;
 }
 
 void actSnk(char command,Snake snake) {
@@ -304,4 +317,30 @@ void moveSnake(Snake s){
 	h->posY=h->posY + s->dirY*stepV;
 	moveParts(h->tail,x,y);
 	printSnake(white,h);
+}
+
+int snakeStatus(Snake snk, Fruit fruit){
+	if((snk->head)->posX >= xResolution-2 || (snk->head)->posX <= 2 || (snk->head)->posY >= yResolution-2 || (snk->head)->posY <= 2)
+		return 1;
+	
+	if((snk->head)->posX == fruit->posX  || (snk->head)->posY == fruit->posY)
+		return 2;
+	return 0;
+}
+
+void printLoseScreen()
+{
+	setCursor((xResolution/2)+50, 300);
+	putStr("YOU LOSE");
+}
+
+void moveFruit(int i,Fruit fruit)
+{
+	printFruit(black,fruit);
+
+	fruit->posX=i*stepH;
+	fruit->posY=i*stepV;
+
+	printFruit(white,fruit);
+
 }
