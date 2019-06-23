@@ -32,7 +32,7 @@ void startSnake(){
 
 	addPart(snake);
 	addPart(snake);
-	addPart(snake);
+	//addPart(snake);
 
 	while (1)
 	{
