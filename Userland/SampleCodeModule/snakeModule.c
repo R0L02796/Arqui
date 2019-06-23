@@ -31,7 +31,7 @@ void startSnake(){
 
 
 
-	SnakeStruct snakes = {&Parts,STOP,RET};
+	SnakeStruct snakes = {&Parts,STOP,ADV};
    	FruitStruct fruits = {10*stepH, 37*stepV};
 
 	Snake snake = &snakes;
@@ -281,19 +281,6 @@ void printFrameSnk() {
 	drawRectangle(white, xResolution-2, yResolution/2, 1, (yResolution/2)-2);
 }
 
-/* 
-void addPart(Snake snk){
-	SnakePart current=snk->head;
-	while (current->tail!=NULL)
-	{
-		putStr(" tail ");
-		current=current->tail;
-	}
-	SnakePartStruct P = {NULL,current->posX + snk->dirX, current->posX + snk->dirY};
-	current->tail = &P;
-	putStr("esta ");
-}
-*/
 void addPart(Snake snk, SnakePart part){
 	snk->head=addPartrec(snk->head,snk->dirX,snk->dirY,part);
 }
@@ -305,13 +292,8 @@ SnakePart addPartrec(SnakePart current, int x, int y,SnakePart part){
 		P->posX = current->posX + x*stepH;
 		P->posY = current->posY + y*stepV;
 		current->tail= P;
-		putStr(" devolvio:");
-		putStr(current->name);
-		putStr(" con cola:");
-		putStr((current->tail)->name);
 		return current;	
 	}
-	putStr(current->name);
 	current->tail=addPartrec(current->tail, x, y,part);
 	return current;
 }
@@ -335,7 +317,9 @@ void moveSnake(Snake s){
 int snakeStatus(Snake snk, Fruit fruit){
 	if((snk->head)->posX >= xResolution-2 || (snk->head)->posX <= 2 || (snk->head)->posY >= yResolution-2 || (snk->head)->posY <= 2)
 		return 1;
-	
+	if(colition(snk))
+		return 1;
+
 	if((snk->head)->posX == fruit->posX && (snk->head)->posY == fruit->posY)
 		return 2;
 	return 0;
@@ -357,3 +341,4 @@ void moveFruit(int i,Fruit fruit,int px [20], int py [20] )
 	printFruit(white,fruit);
 
 }
+
