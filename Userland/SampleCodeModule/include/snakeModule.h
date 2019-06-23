@@ -69,6 +69,8 @@ void actSnk(char command, Snake snake);
 //Adds part
 void addPart(Snake s);
 
+SnakePart addPartrec(SnakePart current, int x, int y);
+
 //Prints points
 void printPts(int point);
 

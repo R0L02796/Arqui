@@ -192,7 +192,7 @@ void printFrameSnk() {
 	drawRectangle(white, xResolution-2, yResolution/2, 1, (yResolution/2)-2);
 }
 
-
+/* 
 void addPart(Snake snk){
 	SnakePart current=snk->head;
 	while (current->tail!=NULL)
@@ -203,6 +203,21 @@ void addPart(Snake snk){
 	SnakePartStruct P = {NULL,current->posX + snk->dirX, current->posX + snk->dirY};
 	current->tail = &P;
 	putStr("esta ");
+}
+*/
+void addPart(Snake snk){
+	snk->head=addPartrec(snk->head,snk->dirX,snk->dirY);
+}
+
+SnakePart addPartrec(SnakePart current, int x, int y){
+	if (current->tail==NULL)
+	{
+		SnakePartStruct P = {NULL,current->posX + x*stepH , current->posX + y*stepV};
+		current->tail=&P;
+		return current;	
+	}
+	current->tail=addPartrec(current->tail, x, y);
+	return current;
 }
 
 void moveSnakeOnAct(Snake s, int newDirX, int newDirY) {	
