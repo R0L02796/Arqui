@@ -56,6 +56,9 @@ void startSnake(){
 	int status = playSnk(fruit, snake);	
 	if (status==1)
 	{
+		doBeep();
+		wait(15);
+		noBeep();
 		printLoseScreen();
 		wait(25);
 		return;
@@ -182,6 +185,9 @@ int playSnk(Fruit fruit, Snake snake) {
 			}
 			cont++;
 			moveFruit(cont,fruit,px,py);
+				doBeep();
+				wait(5);
+				noBeep();
 			}
 	}
 	return status;
@@ -327,8 +333,8 @@ int snakeStatus(Snake snk, Fruit fruit){
 
 void printLoseScreen()
 {
-	setCursor((xResolution/2)+50, 300);
-	putStr("YOU LOSE");
+	setCursor((xResolution/2), 300);
+	putStr("      GAME OVER     ");
 }
 
 void moveFruit(int i,Fruit fruit,int px [20], int py [20] )
