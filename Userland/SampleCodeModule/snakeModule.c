@@ -263,8 +263,6 @@ void printInitScreenSnk(Fruit fruit,Snake snake) {
 }
 void printSnake(Color color, SnakePart s) {
 	SnakePart aux = s;
-	drawRectangle(color, aux->posX, aux->posY, 7, 7);
-	aux=aux->tail;
 	while (aux!=NULL)
 	{
 		drawRectangle(color, aux->posX, aux->posY, 4, 4);
@@ -349,6 +347,7 @@ int colition(Snake s)
 	int x=(s->head)->posX;
 	int y=(s->head)->posY;
 	SnakePart aux = s->head;
+	aux=aux->tail;
 	while (aux!=NULL)
 	{
 		if(aux->posX==x && aux->posY == y)
