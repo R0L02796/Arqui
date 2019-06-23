@@ -18,6 +18,8 @@ void startSnake(){
 
 	SnakePartStruct Parts = {1,NULL,xResolution/2,yResolution/2};
 	SnakePartStruct tail = {0,NULL,Parts.posX-20,Parts.posY};
+	SnakePartStruct tail2 = {0,NULL,tail.posX-20,tail.posY};
+
 
 	SnakeStruct snakes = {&Parts,SUP};
    	FruitStruct fruits = {xResolution/15, yResolution/1.3};
@@ -26,6 +28,8 @@ void startSnake(){
 	Fruit fruit = &fruits;
 
 	addPart(snake->head,&tail);
+	addPart(snake->head,&tail2);
+
 
     printInitScreenSnk(fruit,snake);
 
