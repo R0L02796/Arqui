@@ -68,7 +68,7 @@ void startSnake(){
 //misterio porque no anda
 void printPts(int point) {
 	setCursor(50, 30);
-	char points[1];
+	char * points;
 	decToStr(point, points);
 	putStr(points);
 	return;
