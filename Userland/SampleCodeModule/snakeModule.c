@@ -70,7 +70,7 @@ int playSnk(Fruit fruit, Snake snake) {
 		wait(15);
 			setCursor(50, 30);
 		char points[1];
-		decToStr(10, points);
+		decToStr((int)getSecond(), points);
 		putStr(points);		
 		char command = getChar();
 		if (command == '\b') {
