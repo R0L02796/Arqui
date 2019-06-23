@@ -85,6 +85,9 @@ void printLoseScreen();
 
 void moveFruit(int i,Fruit fruit,int px [20], int py [20] );
 
+int colition(Snake s);
+
+
 
 
 

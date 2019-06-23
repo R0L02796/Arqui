@@ -342,3 +342,16 @@ void moveFruit(int i,Fruit fruit,int px [20], int py [20] )
 
 }
 
+int colition(Snake s)
+{
+	int x=(s->head)->posX;
+	int y=(s->head)->posY;
+	SnakePart aux = s->head;
+	while (aux!=NULL)
+	{
+		if(aux->posX==x && aux->posY == y)
+			return 1;
+		aux=aux->tail;
+	}
+	return 0;
+}
