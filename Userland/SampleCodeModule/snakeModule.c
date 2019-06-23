@@ -160,17 +160,16 @@ void moveParts(SnakePart curr,int x, int y){
 void printInitScreenSnk(Fruit fruit,Snake snake) {
 	clearScreen();
 	printFrameSnk();
+			putStr("on print");
+
 	printSnake(white, snake->head);
 	printFruit(white, fruit);
 }
 void printSnake(Color color, SnakePart s) {
 	if (s==NULL)
 		return;
-	
-	int xPos=s->posX;
-	int yPos=s->posY;
-	
-	drawRectangle(color, xPos, yPos, 4,4);
+			putStr("on printsnk");
+	drawRectangle(color,s->posX, s->posY, 4,4);
 	printSnake(color,s->tail);
 }
 
