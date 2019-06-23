@@ -323,7 +323,7 @@ int snakeStatus(Snake snk, Fruit fruit){
 	if((snk->head)->posX >= xResolution-2 || (snk->head)->posX <= 2 || (snk->head)->posY >= yResolution-2 || (snk->head)->posY <= 2)
 		return 1;
 	
-	if((snk->head)->posX == fruit->posX  || (snk->head)->posY == fruit->posY)
+	if((snk->head)->posX == fruit->posX && (snk->head)->posY == fruit->posY)
 		return 2;
 	return 0;
 }
