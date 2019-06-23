@@ -1,7 +1,11 @@
 #include "stdint.h"
 #include <SYSCall.h>
 #include <stdarg.h>
-#include <stdlib.h>
+#include "stdlib.h"
+
+#define A 25214903917
+#define C 11
+#define M 281474976710656
 
 char buffer[BUFFER_SIZE] = {0};
 
@@ -127,4 +131,18 @@ int strCmp(char * a, char * b) {
 int abs(int n) {
 	if (n>0) return n;
 	return -n;
+}
+
+unsigned long int var = 1;
+
+void srand(unsigned long int seed) { var = seed; }
+
+void lcg(unsigned long int *x, unsigned long int a, int c,
+         unsigned long int m) {
+  *x = (a * (*x) + c) % m;
+}
+
+unsigned long int rand() {
+  lcg(&var, A, C, M);
+  return var;
 }

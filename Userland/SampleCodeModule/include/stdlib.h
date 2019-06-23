@@ -33,4 +33,10 @@ int abs(int n);
 // Prints string
 void putStr(char * string);
 
+void srand(unsigned long int seed);
+
+void lcg(unsigned long int *x, unsigned long int a, int c,
+         unsigned long int m) ;
+
+unsigned long int rand();
 #endif
