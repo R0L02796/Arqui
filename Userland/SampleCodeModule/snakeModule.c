@@ -68,7 +68,7 @@ int playSnk(Fruit fruit, Snake snake) {
 	int exitStatus = 0;
 	while (playing) {
 		wait(15);
-		char points[3];
+		char points[1];
 		decToStr(10, points);
 		putStr(points);		
 		char command = getChar();
