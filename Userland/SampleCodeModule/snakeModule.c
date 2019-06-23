@@ -33,7 +33,7 @@ void startSnake(){
 	addPart(snake,"a");
 	addPart(snake,"b");
 	addPart(snake,"c");
-	printSnake(white, snake->head);
+//	printSnake(white, snake->head);
 	while (1)
 	{
 	}
@@ -211,8 +211,13 @@ SnakePart addPartrec(SnakePart current, int x, int y,char * n){
 	{
 		SnakePartStruct P = {n,NULL,current->posX + x*stepH , current->posX + y*stepV};
 		current->tail=&P;
+		putStr(" devolvio:");
+		putStr(current->name);
+		putStr(" con cola:");
+		putStr((current->tail)->name);
 		return current;	
 	}
+	putStr("   sig    ");
 	current->tail=addPartrec(current->tail, x, y,n);
 	return current;
 }
