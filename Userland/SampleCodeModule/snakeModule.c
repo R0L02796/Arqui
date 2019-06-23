@@ -59,6 +59,8 @@ void printPts(int point) {
 	char points[1];
 	decToStr(point, points);
 	putStr(points);
+		putStr("		wasa");
+
 }
 
 int playSnk(Fruit fruit, Snake snake) {
@@ -67,7 +69,6 @@ int playSnk(Fruit fruit, Snake snake) {
 	while (playing) {
 		wait(15);
 		printPts(1);
-		putStr("		wasa");
 		char command = getChar();
 		if (command == '\b') {
 			playing = 0;
