@@ -120,7 +120,7 @@ void moveSnake(Snake s, int newDir) {
 void printInitScreenSnk(Fruit fruit,Snake snake) {
 	clearScreen();
 	printFrameSnk();
-	printSnake(white, snake->head);
+	printSnake(white, snake->head,0);
 	printFruit(white, fruit);
 }
 void printSnake(Color color, SnakePart s, int i) {
@@ -135,7 +135,8 @@ void printSnake(Color color, SnakePart s, int i) {
 	 while (s->tail != NULL)
 	{
 		printSnake(color,s->tail,i+1);	
-		putStr('i');
+		char * s = i;
+		putStr(s);
 	}
 	return;
 }
