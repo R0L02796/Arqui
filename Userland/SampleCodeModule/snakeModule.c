@@ -188,9 +188,6 @@ int playSnk(Fruit fruit, Snake snake) {
 			}
 			cont++;
 			moveFruit(cont,fruit,px,py);
-				doBeep();
-				wait(5);
-				noBeep();
 			}
 	}
 	return status;
@@ -274,7 +271,7 @@ void printSnake(Color color, SnakePart s) {
 	SnakePart aux = s;
 	while (aux!=NULL)
 	{
-		drawRectangle(color, aux->posX, aux->posY, 4, 4);
+		drawRectangle(color, aux->posX, aux->posY, stepH, stepV);
 		aux=aux->tail;
 	}
 }
