@@ -68,7 +68,7 @@ void startSnake(){
 //misterio porque no anda
 void printPts(int point) {
 	setCursor(50, 30);
-	char * points;
+	char points[1];
 	decToStr(point, points);
 	putStr(points);
 	return;
@@ -172,7 +172,10 @@ int playSnk(Fruit fruit, Snake snake) {
 			playing = 0;
 		}
 		int pts = startPts - hrToSec(getHour(),getMinute(),getSecond());
-		printPts(pts);
+		setCursor(50, 30);
+		char points[1];
+		decToStr(pts, points);
+		putStr(points);
 		actSnk(command,snake);
 		moveSnake(snake);
 		status = snakeStatus(snake, fruit);
