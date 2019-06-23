@@ -186,13 +186,17 @@ void printFrameSnk() {
 
 
 void addPart(Snake s){
+			putStr("on add");
 	SnakePart current=s->head;
 	while (current->tail!=NULL)
 	{
+		putStr("on if");
 		current=current->tail;
 	}
 	SnakePartStruct Parts = {NULL,current->posX + s->dirX*stepH,current->posY + s->dirY*stepV};
 	current->tail = &Parts;
+		putStr("on ret");
+
 }
 
 void moveSnakeOnAct(Snake s, int newDirX, int newDirY) {	
