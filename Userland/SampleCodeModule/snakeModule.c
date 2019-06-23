@@ -289,8 +289,8 @@ SnakePart addPartrec(SnakePart current, int x, int y,SnakePart part){
 	if (current->tail==NULL)
 	{
 		SnakePart P = part;
-		P->posX = current->posX + x*stepH;
-		P->posY = current->posY + y*stepV;
+		P->posX = current->posX + x*stepH*(-1);
+		P->posY = current->posY + y*stepV*(-1);
 		current->tail= P;
 		return current;	
 	}
