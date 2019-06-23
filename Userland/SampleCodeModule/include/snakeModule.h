@@ -70,7 +70,7 @@ void actSnk(char command, Snake snake);
 //adds part
 void addPart(SnakePart head, SnakePart part);
 
-
+void printpts(int point);
 
 
 

@@ -54,11 +54,18 @@ void startSnake(){
 	int exitStatus = playSnk(fruit, snake);	
 
 }
+void printpts(int point) {
+	setCursor(50, 30);
+	char points[1];
+	decToStr(point, points);
+	putStr(points);
+}
 
 int playSnk(Fruit fruit, Snake snake) {
 	int playing = 1;
 	int exitStatus = 0;
 	while (playing) {
+		printPts(getSecond());
 		wait(15);
 		char command = getChar();
 		if (command == '\b') {
