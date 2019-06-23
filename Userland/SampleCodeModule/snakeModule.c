@@ -24,6 +24,10 @@ void startSnake(){
 	stepH = xResolution/50;
 
 	SnakePartStruct Parts = {"head",NULL,25*stepH,25*stepV};
+	SnakePartStruct Parta = {"a",NULL,25*stepH,25*stepV};
+	SnakePartStruct Partb = {"b",NULL,25*stepH,25*stepV};
+	SnakePartStruct Partc = {"c",NULL,25*stepH,25*stepV};
+
 	SnakeStruct snakes = {&Parts,STOP,RET};
    	FruitStruct fruits = {10*stepH, 37*stepV};
 
@@ -31,13 +35,13 @@ void startSnake(){
 	Fruit fruit = &fruits;
 
 	putStr("  add  a  ");
-	addPart(snake,"a");
+	addPart(snake, &Parta);
 		putStr("  add  b  ");
 
-	addPart(snake,"b");
+	addPart(snake, &Partb);
 	putStr("  add  c  ");
 
-	addPart(snake,"c");
+	addPart(snake, &Partc);
 //	printSnake(white, snake->head);
 	while (1)
 	{
@@ -85,7 +89,6 @@ int playSnk(Fruit fruit, Snake snake) {
 			if (speed>0)
 				speed--;
 			startTime = now;
-			addPart(snake,"wasa");
 		}
 
 		char command = getChar();
@@ -207,18 +210,16 @@ void addPart(Snake snk){
 	putStr("esta ");
 }
 */
-void addPart(Snake snk, char * n){
-	snk->head=addPartrec(snk->head,snk->dirX,snk->dirY,n);
+void addPart(Snake snk, SnakePart part){
+	snk->head=addPartrec(snk->head,snk->dirX,snk->dirY,part);
 }
 
-SnakePart addPartrec(SnakePart current, int x, int y,char * n){
+SnakePart addPartrec(SnakePart current, int x, int y,SnakePart part){
 	if (current->tail==NULL)
 	{
-		SnakePart P = (SnakePartStruct *) malloc(sizeof(SnakePartStruct));
-		P->name=n;
-		P->tail=NULL;
-		P->posX=current->posX + x*stepH;
-		P->posY=current->posX + y*stepV;
+		SnakePart P = part;
+		P->posX = current->posX + x*stepH;
+		P->posY = current->posY + y*stepV;
 		current->tail= P;
 		putStr(" devolvio:");
 		putStr(current->name);
@@ -227,7 +228,7 @@ SnakePart addPartrec(SnakePart current, int x, int y,char * n){
 		return current;	
 	}
 	putStr(current->name);
-	current->tail=addPartrec(current->tail, x, y,n);
+	current->tail=addPartrec(current->tail, x, y,part);
 	return current;
 }
 

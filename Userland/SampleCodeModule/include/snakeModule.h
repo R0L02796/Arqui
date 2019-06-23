@@ -5,6 +5,7 @@
 #define SNAKEMODULE_H
 #include "videoModule.h"
 
+#define NULL (void*)0
 
 #define SUP 119
 #define SDOWN 115
@@ -68,9 +69,9 @@ void moveSnake(Snake s);
 void actSnk(char command, Snake snake);
 
 //Adds part
-void addPart(Snake s, char * n);
+void addPart(Snake s, SnakePart part);
 
-SnakePart addPartrec(SnakePart current, int x, int y, char * n);
+SnakePart addPartrec(SnakePart current, int x, int y, SnakePart part);
 
 //Prints points
 void printPts(int point);
