@@ -59,7 +59,7 @@ int playSnk(Fruit fruit, Snake snake) {
 	int playing = 1;
 	int exitStatus = 0;
 	while (playing) {
-		wait(5);
+		wait(15);
 		char command = getChar();
 		if (command == '\b') {
 			playing = 0;
