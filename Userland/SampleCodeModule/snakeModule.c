@@ -214,7 +214,7 @@ void addPart(Snake snk, char * n){
 SnakePart addPartrec(SnakePart current, int x, int y,char * n){
 	if (current->tail==NULL)
 	{
-		SnakePart P = malloc(sizeof(SnakePartStruct));
+		SnakePart P = (SnakePartStruct *) malloc(sizeof(SnakePartStruct));
 		P->name=n;
 		P->tail=NULL;
 		P->posX=current->posX + x*stepH;
