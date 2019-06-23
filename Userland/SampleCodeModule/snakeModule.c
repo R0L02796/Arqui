@@ -55,7 +55,11 @@ void startSnake(){
 
 	int status = playSnk(fruit, snake);	
 	if (status==1)
+	{
 		printLoseScreen();
+		wait(25);
+		return;
+	}
 }
 
 //misterio porque no anda
