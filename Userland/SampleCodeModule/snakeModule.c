@@ -170,7 +170,7 @@ void printInitScreenSnk(Fruit fruit,Snake snake) {
 void printSnake(Color color, SnakePart s) {
 	SnakePart aux = s;
 	putStr("  entro  ");
-	while (aux!=NULL)
+	while (aux->tail!=NULL)
 	{
 		putStr("  en while  ");
 		drawRectangle(color, aux->posX, aux->posY, 4, 4);
