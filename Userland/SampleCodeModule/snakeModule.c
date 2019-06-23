@@ -81,6 +81,10 @@ int playSnk(Fruit fruit, Snake snake) {
 			speed--;
 			startTime = now;
 		}
+		setCursor(50, 30);
+		char str[1];
+		decToStr(speed,str);
+		putStr(str);
 		char command = getChar();
 		if (command == '\b') {
 			playing = 0;
