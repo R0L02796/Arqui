@@ -120,25 +120,18 @@ void moveSnake(Snake s, int newDir) {
 void printInitScreenSnk(Fruit fruit,Snake snake) {
 	clearScreen();
 	printFrameSnk();
-	printSnake(white, snake->head,0);
+	printSnake(white, snake->head);
 	printFruit(white, fruit);
 }
-void printSnake(Color color, SnakePart s, int i) {
+void printSnake(Color color, SnakePart s) {
+	if (s==NULL)
+		return;
+	
 	int xPos=s->posX;
 	int yPos=s->posY;
 	
 	drawRectangle(color, xPos, yPos, 4,4);
-
-	if(s->tail==NULL)
-		drawRectangle(color, 20, 100, 10,10);
-
-	 while (s->tail != NULL)
-	{
-		printSnake(color,s->tail,i+1);	
-		char * s = i;
-		putStr(s);
-	}
-	return;
+	printSnake(color,s->tail);
 }
 
 void printFruit(Color color, Fruit b) {
@@ -153,7 +146,7 @@ void printFrameSnk() {
 }
 void addPart(SnakePart head, SnakePart part){
 	SnakePart current=head;
-	while (head->tail!=NULL)
+	while (current->tail!=NULL)
 	{
 		current=current->tail;
 	}

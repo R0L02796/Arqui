@@ -38,7 +38,7 @@ typedef FruitStruct * Fruit;
 void startSnake(); 
 
 // Prints snake
-void printSnake(Color color, SnakePart snake, int i);
+void printSnake(Color color, SnakePart snake);
 
 // Displays initial screen of game
 void printInitScreenSnk(Fruit fruit, Snake snake);
