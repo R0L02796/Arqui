@@ -20,7 +20,7 @@ static Color black = {0, 0, 0};
 void startSnake(){
     getSize(&xResolution, &yResolution);	
 	int startPts = hrToSec(getHour(),getMinute(),getSecond());
-	srand(startPts);
+	srand(getSecond());
 
 	stepV = yResolution/50;
 	stepH = xResolution/50;
@@ -98,9 +98,7 @@ int playSnk(Fruit fruit, Snake snake, int startPts) {
 	SnakePartStruct Part17 = {"o",NULL,25*stepH,25*stepV};
 	SnakePartStruct Part18 = {"o",NULL,25*stepH,25*stepV};
 
-	int px[20] = {45,32,23,12,3,43,2,37,9,25,10,40,22,3,5,46,15,26,16,43};
-	int py[20] = {43,3,25,32,5,42,13,17,23,10,8,21,32,33,13,42,15,23,25,20};
-	int cont=-1;
+
 
 	int status=0;
 	int playing = 1;
@@ -190,13 +188,9 @@ int playSnk(Fruit fruit, Snake snake, int startPts) {
 		if(status==2)
 			{
 			status=0;
-			if(cont > 20)
-			{
-				playing=0;
-				return status;
-			}
-			cont++;
-			moveFruit(cont,fruit,px,py);
+			playing=0;
+			return status;
+			moveFruit(fruit);
 			}
 	}
 	return status;
@@ -350,12 +344,9 @@ void printLoseScreen(int pts)
 	putStr(points);
 }
 
-void moveFruit(int i,Fruit fruit,int px [20], int py [20] )
+void moveFruit(Fruit fruit)
 {
 	printFruit(black,fruit);
-
-//	fruit->posX=px[i]*stepH;
-//	fruit->posY=py[i]*stepV;
 
 	fruit->posX=rand()%50 *stepH;
 	fruit->posY=rand()%50 *stepV;
