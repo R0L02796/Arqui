@@ -35,7 +35,7 @@ void startSnake(){
 
 
 	SnakeStruct snakes = {&Parts,STOP,ADV};
-   	FruitStruct fruits = {rand()%50*stepH, rand()%50*stepV};
+   	FruitStruct fruits = {1+rand()%48*stepH, 1+rand()%48*stepV};
 
 	Snake snake = &snakes;
 	Fruit fruit = &fruits;
@@ -338,8 +338,8 @@ void moveFruit(Fruit fruit)
 {
 	printFruit(black,fruit);
 
-	fruit->posX=rand()%50 *stepH;
-	fruit->posY=rand()%50 *stepV;
+	fruit->posX= 1+rand()%48*stepH;
+	fruit->posY= 1+rand()%48*stepV;
 
 	printFruit(white,fruit);
 
