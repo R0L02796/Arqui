@@ -19,6 +19,8 @@ static Color black = {0, 0, 0};
 
 void startSnake(){
     getSize(&xResolution, &yResolution);	
+	int startPts = hrToSec(getHour(),getMinute(),getSecond());
+	srand(startPts);
 
 	stepV = yResolution/50;
 	stepH = xResolution/50;
@@ -33,7 +35,7 @@ void startSnake(){
 
 
 	SnakeStruct snakes = {&Parts,STOP,ADV};
-   	FruitStruct fruits = {10*stepH, 37*stepV};
+   	FruitStruct fruits = {rand()%50*stepH, rand()%50*stepV};
 
 	Snake snake = &snakes;
 	Fruit fruit = &fruits;
@@ -53,8 +55,7 @@ void startSnake(){
 		return;
 	}
 	drawRectangle(black, xResolution/2, 20, (xResolution/2)-60, 10);
-	int startPts = hrToSec(getHour(),getMinute(),getSecond());
-	srand(startPts);
+	
 	int status = playSnk(fruit, snake,startPts);	
 	if (status==1)
 	{
@@ -356,8 +357,8 @@ void moveFruit(int i,Fruit fruit,int px [20], int py [20] )
 //	fruit->posX=px[i]*stepH;
 //	fruit->posY=py[i]*stepV;
 
-	fruit->posX=rand();
-	fruit->posY=rand();
+	fruit->posX=rand()%50 *stepH;
+	fruit->posY=rand()%50 *stepV;
 
 	printFruit(white,fruit);
 
