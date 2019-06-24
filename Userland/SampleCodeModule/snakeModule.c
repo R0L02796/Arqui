@@ -188,8 +188,6 @@ int playSnk(Fruit fruit, Snake snake, int startPts) {
 		if(status==2)
 			{
 			status=0;
-			playing=0;
-			return status;
 			moveFruit(fruit);
 			}
 	}
