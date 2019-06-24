@@ -75,9 +75,6 @@ void addPart(Snake s, SnakePart part);
 
 SnakePart addPartrec(SnakePart current, int x, int y, SnakePart part);
 
-//Prints points
-void printPts(int point);
-
 //Transforms time in seconds
 int hrToSec(int h, int m, int s);
 

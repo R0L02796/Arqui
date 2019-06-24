@@ -68,14 +68,6 @@ void startSnake(){
 	}
 }
 
-//misterio porque no anda
-void printPts(int point) {
-	setCursor(50, 30);
-	char points[1];
-	decToStr(point, points);
-	putStr(points);
-	return;
-}
 
 int hrToSec(int h, int m, int s){
 	return h*3600+m*60+s;
